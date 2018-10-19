@@ -1,7 +1,28 @@
 * {
     font-family: Arial;
+    margin: 0;
 }
 body {
-    background: rgb(207, 240, 255);
+    background: rgb(255, 196, 252);
+
+    background: #d5b8ff;
     
+}
+header{
+    background: #cff0ff;
+}
+table{
+    margin-top: 20px;
+    background: #d5b8ff;
+}
+thead{
+    background: #fff579;
+}
+td {
+    background: #fdffd5;
+}
+.wrapper{
+    width: 800px;
+    margin: 0 auto;
+    background: rgb(254, 150, 255);
 }

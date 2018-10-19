@@ -7,6 +7,7 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/beautiful.css}" />
 </head>
 <body>
+<div class="wrapper">
 <header>
     <a href="index.html">Movies</a>
     <a href="actors.html">Actors</a>
@@ -29,6 +30,8 @@
         <td th:text="${movie.movie_id}"/>
         <td th:text="${movie.title}"/>
         <td th:text="${movie.productionYear}"/>
+        <td th:text="${movie.genre}"/>
+        <td>WIP</td>
     </tr>
     </tbody>
 
@@ -36,6 +39,6 @@
 </table>
 
 
-
+</div>
 </body>
 </html>
