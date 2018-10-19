@@ -20,6 +20,7 @@ public class MovieController {
 
     private final String INDEX = "index";
     private final String CREATE = "create";
+    private final String REDIRECT_INDEX = "redirect:/";
 
     @GetMapping("/")
     public String index(Model model){
@@ -38,7 +39,8 @@ public class MovieController {
     @PostMapping("/create.html")
     public String createMovie(){
         LOGGER.info("createMovie was called... ");
-        return CREATE;
+        return REDIRECT_INDEX;
+
     }
 
 
