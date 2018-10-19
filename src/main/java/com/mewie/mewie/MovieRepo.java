@@ -1,6 +1,6 @@
 package com.mewie.mewie;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public interface MovieRepo {
 
@@ -8,5 +8,5 @@ public interface MovieRepo {
     boolean deleteMovie(int index);
     Movie updateMovie(Movie movie);
     Movie getMovie(int index);
-    ArrayList<Movie> getMovies();
+    List<Movie> getMovies();
 }

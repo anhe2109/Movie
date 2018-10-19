@@ -257,7 +257,7 @@ See also com.mysql.cj.conf.PropertyDefinitions.SYSP_* variables for other test o
     <property name="com.mysql.cj.dist.dir.prebuilt.docs" value="/tmp/connectorj/docs/prebuilt" />
 
     <!-- This propertyset is used to forward tests setup configurations as system variables to JUnit tasks. -->
-    <propertyset id="junit.system.properties">
+    <propertyset movie_id="junit.system.properties">
         <propertyref prefix="com.mysql.cj.testsuite." />
     </propertyset>
 
@@ -267,11 +267,11 @@ See also com.mysql.cj.conf.PropertyDefinitions.SYSP_* variables for other test o
     </condition>
 
     <!-- Classpaths settings. -->
-    <path id="built.driver.only.classpath">
+    <path movie_id="built.driver.only.classpath">
         <pathelement location="${com.mysql.cj.build.dir.driver}" />
     </path>
 
-    <path id="project.build.classpath">
+    <path movie_id="project.build.classpath">
         <fileset dir="${com.mysql.cj.extra.libs}">
             <include name="**/*.jar" />
             <exclude name="**/javassist-3.15.0-GA.jar" />
@@ -284,13 +284,13 @@ See also com.mysql.cj.conf.PropertyDefinitions.SYSP_* variables for other test o
         <pathelement location="${com.mysql.cj.build.dir.driver}" />
     </path>
 
-    <path id="instrumentation.classpath">
+    <path movie_id="instrumentation.classpath">
         <path refid="project.build.classpath" />
 
         <pathelement location="${com.mysql.cj.build.compiler.output}" />
     </path>
 
-    <path id="com.mysql.cj.testsuite.build.classpath">
+    <path movie_id="com.mysql.cj.testsuite.build.classpath">
         <fileset dir="${com.mysql.cj.extra.libs}">
             <include name="**/*.jar" />
             <exclude name="**/javassist-3.15.0-GA.jar" />
@@ -477,7 +477,7 @@ See also com.mysql.cj.conf.PropertyDefinitions.SYSP_* variables for other test o
         </loadresource>
 
         <!-- Common filterset -->
-        <filterset id="versionFilterset">
+        <filterset movie_id="versionFilterset">
             <filter token="MYSQL_CJ_MAJOR_VERSION" value="${com.mysql.cj.build.driver.version.major}" />
             <filter token="MYSQL_CJ_MINOR_VERSION" value="${com.mysql.cj.build.driver.version.minor}" />
             <filter token="MYSQL_CJ_SUBMINOR_VERSION" value="${com.mysql.cj.build.driver.version.subminor}" />
@@ -500,7 +500,7 @@ See also com.mysql.cj.conf.PropertyDefinitions.SYSP_* variables for other test o
         <condition property="com.mysql.cj.build.licenseType" value="commercial" else="GPL">
             <istrue value="${com.mysql.cj.build.commercial}" />
         </condition>
-        <filterset id="licenseFilterset">
+        <filterset movie_id="licenseFilterset">
             <filter token="MYSQL_CJ_LICENSE_TYPE" value="${com.mysql.cj.build.licenseType}" />
         </filterset>
 
@@ -767,7 +767,7 @@ See also com.mysql.cj.conf.PropertyDefinitions.SYSP_* variables for other test o
 
         <delete dir="${com.mysql.cj.dist.dir.prepare}" />
 
-        <patternset id="non.test.sources">
+        <patternset movie_id="non.test.sources">
             <exclude name="**/*.nb*" />
             <exclude name="**/*.bak" />
             <exclude name="**/*.*~" />
@@ -1410,7 +1410,7 @@ See also com.mysql.cj.conf.PropertyDefinitions.SYSP_* variables for other test o
             depends="-init-copy-common, -set-no-sources, -set-package-name, -prepare-rpm-deb-commercial-props, -prepare-rpm-deb-gpl-props">
         <exec executable="lsb_release" outputproperty="lsb_id">
             <arg value="--short" />
-            <arg value="--id" />
+            <arg value="--movie_id" />
         </exec>
         <exec executable="lsb_release" outputproperty="lsb_release">
             <arg value="--short" />
