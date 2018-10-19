@@ -2,7 +2,6 @@ package com.mewie.mewie;
 
 import org.springframework.stereotype.Repository;
 
-import javax.validation.constraints.Null;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
