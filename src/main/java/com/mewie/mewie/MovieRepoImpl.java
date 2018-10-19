@@ -39,10 +39,11 @@ public class MovieRepoImpl implements MovieRepo {
     @Override
     public List<Movie> getMovies() {
         // get the jdbcTemplate to work plx - this could get out of hand fast.
-        try (
-                Connection connection = DriverManager.getConnection(url, username, password);
-                Statement statement = connection.createStatement()
-        ) {
+        Connection connection = null;
+        try {
+            connection = DriverManager.getConnection(url, username, password);
+            Statement statement = connection.createStatement();
+
             String stringSelect = "SELECT * FROM movies";
             ResultSet resultSet = statement.executeQuery(stringSelect);
 
@@ -58,7 +59,10 @@ public class MovieRepoImpl implements MovieRepo {
             return movies;
         } catch (Exception e) {
             e.printStackTrace();
-            return null;}
+            return null;
+        } finally {
+            try {connection.close();} catch (Exception e) {e.printStackTrace();}
+        }
 
     }
 }

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" >
+<head>
+    <meta charset="UTF-8">
+    <title>AIH EHM DEH BHE</title>
+
+    <link rel="stylesheet" type="text/css" th:href="@{/css/beautiful.css}" />
+</head>
+<body>
+<div class="wrapper">
+<header>
+    <a href="index.html">Movies</a>
+    <a href="actors.html">Actors</a>
+</header>
+
+<a href="create.html">Create movie</a>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Production year</th>
+            <th>Genre</th>
+            <th>Actors</th>
+        </tr>
+    </thead>
+    <tbody>
+    <tr th:each="movie: ${movies}">
+        <td th:text="${movie.movie_id}"/>
+        <td th:text="${movie.title}"/>
+        <td th:text="${movie.productionYear}"/>
+        <td th:text="${movie.genre}"/>
+        <td>WIP</td>
+    </tr>
+    </tbody>
+
+
+</table>
+
+
+</div>
+</body>
+</html>
