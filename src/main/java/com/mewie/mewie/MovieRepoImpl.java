@@ -1,5 +1,7 @@
 package com.mewie.mewie;
 
+import org.springframework.boot.autoconfigure.jdbc.JdbcTemplateAutoConfiguration;
+import org.springframework.boot.autoconfigure.quartz.QuartzProperties;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -29,6 +31,9 @@ public class MovieRepoImpl implements MovieRepo {
 
     @Override
     public ArrayList<Movie> getMovies() {
+        String sql = "";
+
+
         return null;
     }
 }
