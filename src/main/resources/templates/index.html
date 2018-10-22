@@ -8,16 +8,35 @@
 </head>
 <body>
 <div class="wrapper">
+    <header>
+        <a href="index.html">Movies</a>
+        <a href="actors.html">Actors</a>
+    </header>
 
-    <form action="#" th:action="@{/login}" th:object="${user}" method="post">
-        <input type="text" placeholder="username" th:field="*{username}">
-        <input type="text" placeholder="password" th:field="*{password}">
-        <input type="submit" value="Submit">
+<a href="create.html">Create movie</a>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Production year</th>
+            <th>Genre</th>
+            <th>Actors</th>
+        </tr>
+    </thead>
+    <tbody>
+    <tr th:each="movie: ${movies}">
+        <td th:text="${movie.movie_id}"/>
+        <td th:text="${movie.title}"/>
+        <td th:text="${movie.productionYear}"/>
+        <td th:text="${movie.genre}"/>
+        <td>WIP</td>
+    </tr>
+    </tbody>
 
 
-    </form>
-
-
+</table>
 
 
 </div>

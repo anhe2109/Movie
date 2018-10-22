@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" >
+<head>
+    <meta charset="UTF-8">
+    <title>AIH EHM DEH BHE</title>
+
+    <link rel="stylesheet" type="text/css" th:href="@{/css/beautiful.css}" />
+</head>
+<body>
+<div class="wrapper">
+
+    <form action="#" th:action="@{/login}" th:object="${user}" method="post">
+        <input type="text" placeholder="username" th:field="*{username}">
+        <input type="text" placeholder="password" th:field="*{password}">
+        <input type="submit" value="Submit">
+
+
+    </form>
+
+
+
+
+</div>
+</body>
+</html>
