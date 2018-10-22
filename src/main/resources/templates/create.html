@@ -1,14 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" >
 <head>
     <meta charset="UTF-8">
     <title>Create</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/beautiful.css}" />
 </head>
 <body>
-<form method="post" action="">
+<div class="wrapper">
+    <header>
+        <a href="index.html">Movies</a>
+        <a href="actors.html">Actors</a>
+    </header>
+
+<form method="post" action="#" th:action="@{/saveMovie}" th:object="${movie}"  >
+    <input type="text" placeholder="title" th:field="*{title}">
+    <input type="number" min="1800" max="2099" step="1" value="2016" th:field="*{productionYear}" />
+    <input type="submit" value="Submit">
 
 
 </form>
 
+</div>
 </body>
 </html>

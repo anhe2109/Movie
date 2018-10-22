@@ -1,6 +1,7 @@
 * {
     font-family: Arial;
-    margin: 0;
+    margin: 5px;
+    padding: 5px;
 }
 body {
     background: rgb(255, 196, 252);
@@ -14,6 +15,7 @@ header{
 table{
     margin-top: 20px;
     background: #d5b8ff;
+    width: 100%;
 }
 thead{
     background: #fff579;
@@ -25,4 +27,7 @@ td {
     width: 800px;
     margin: 0 auto;
     background: rgb(254, 150, 255);
+}
+form{
+    background: #fff579;
 }

@@ -32,14 +32,17 @@ public class MovieController {
     }
 
     @GetMapping("/create.html")
-    public String create(){
+    public String create(Model model){
         LOGGER.info("create was called... ");
+        model.addAttribute("movie", new Movie());
         return CREATE;
     }
 
-    @PostMapping("/create.html")
-    public String createMovie(){
-        LOGGER.info("createMovie was called... ");
+    @RequestMapping("/saveMovie")
+    public String saveMovie(@ModelAttribute Movie movie){
+        LOGGER.info("saveMovie was called... ");
+        LOGGER.info(movie.getTitle());
+        LOGGER.info(String.valueOf(movie.getProductionYear()));
         return REDIRECT_INDEX;
 
     }
