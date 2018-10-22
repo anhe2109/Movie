@@ -27,7 +27,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="movie: ${movies}">
+        <tr th:each="movie: ${movies}" id="tablerow">
             <td th:text="${movie.movie_id}"/>
             <td th:text="${movie.title}"/>
             <td th:text="${movie.productionYear}"/>
