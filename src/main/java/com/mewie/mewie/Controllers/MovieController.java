@@ -5,9 +5,7 @@ import com.mewie.mewie.Repositories.MovieRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.logging.Logger;
@@ -22,7 +20,9 @@ public class MovieController {
 
     private final String INDEX = "index";
     private final String CREATE = "create";
+    private final String DELETE = "delete";
     private final String REDIRECT_INDEX = "redirect:/";
+
 
     @GetMapping("/")
     public String index(Model model){
@@ -45,6 +45,14 @@ public class MovieController {
         movieRepo.createMovie(movie);
         return REDIRECT_INDEX;
 
+    }
+
+    @RequestMapping(value = "/deleteMovie", method = RequestMethod.GET)
+    public String deleteMovie(@RequestParam(name="id")String id ){
+        LOGGER.info("Delete movie was called" + id);
+
+        movieRepo.deleteMovie(Integer.parseInt(id));
+        return REDIRECT_INDEX;
     }
 
 

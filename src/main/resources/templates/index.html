@@ -23,6 +23,7 @@
             <th>Production year</th>
             <th>Genre</th>
             <th>Actors</th>
+            <th>Delete movie</th>
         </tr>
         </thead>
         <tbody>
@@ -31,12 +32,15 @@
             <td th:text="${movie.title}"/>
             <td th:text="${movie.productionYear}"/>
             <td th:text="${movie.genre}"/>
-            <td>WIP</td>
+            <td><a href="">WIP</a></td>
+            <td><a th:href="@{/deleteMovie(id=${movie.movie_id})}"> Her kommer gtekst </a> </td>
         </tr>
         </tbody>
 
 
     </table>
+
+
 
 
 </div>
