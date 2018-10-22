@@ -42,8 +42,7 @@ public class MovieController {
     @RequestMapping("/saveMovie")
     public String saveMovie(@ModelAttribute Movie movie){
         LOGGER.info("saveMovie was called... ");
-        LOGGER.info(movie.getTitle());
-        LOGGER.info(String.valueOf(movie.getProductionYear()));
+        movieRepo.createMovie(movie);
         return REDIRECT_INDEX;
 
     }
