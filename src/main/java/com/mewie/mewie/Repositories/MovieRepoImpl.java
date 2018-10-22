@@ -20,6 +20,7 @@ public class MovieRepoImpl extends JdbcFix implements MovieRepo {
             Statement statement = connection.createStatement();
             String stringInsert = "INSERT INTO movies VALUES (default, '" + movie.getTitle() + "', ' " + movie.getProductionYear() + "' , '" + movie.getGenre() + "');";
             statement.execute(stringInsert);
+            closeConnection(connection);
             return true;
         } catch (Exception e) { e.printStackTrace();}
         return false;
@@ -72,7 +73,7 @@ public class MovieRepoImpl extends JdbcFix implements MovieRepo {
             e.printStackTrace();
             return null;
         } finally {
-            try {connection.close();} catch (Exception e) {e.printStackTrace();}
+            closeConnection(connection);
         }
 
     }
