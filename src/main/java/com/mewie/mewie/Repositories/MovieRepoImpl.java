@@ -11,11 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-public class MovieRepoImpl implements MovieRepo {
-
-    private final String url = "jdbc:mysql://gruppe-a.cnjchjz7nynx.eu-central-1.rds.amazonaws.com:3306/mewie?useSSL=false";
-    private final String username = "rewt";
-    private final String password = "supersecurepassword";
+public class MovieRepoImpl extends JdbcFix implements MovieRepo {
 
     @Override
     public boolean createMovie(Movie movie) {
@@ -39,10 +35,8 @@ public class MovieRepoImpl implements MovieRepo {
 
     @Override
     public List<Movie> getMovies() {
-        // get the jdbcTemplate to work plx - this could get out of hand fast.
-        Connection connection = null;
         try {
-            connection = DriverManager.getConnection(url, username, password);
+            connection = getConnection();
             Statement statement = connection.createStatement();
 
             String stringSelect = "SELECT * FROM movies";
@@ -55,9 +49,11 @@ public class MovieRepoImpl implements MovieRepo {
                 String title = resultSet.getString("title");
                 int productionYear = resultSet.getInt("productionYear");
                 int genre = resultSet.getInt("genre");
+
                 movies.add(new Movie(id, title, productionYear, genre));
             }
             return movies;
+            
         } catch (Exception e) {
             e.printStackTrace();
             return null;
