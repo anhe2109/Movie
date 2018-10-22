@@ -1,5 +1,6 @@
-package com.mewie.mewie;
+package com.mewie.mewie.Repositories;
 
+import com.mewie.mewie.Beans.Movie;
 import org.springframework.stereotype.Repository;
 
 import java.sql.Connection;

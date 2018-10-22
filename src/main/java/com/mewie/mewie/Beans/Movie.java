@@ -1,4 +1,4 @@
-package com.mewie.mewie;
+package com.mewie.mewie.Beans;
 
 public class Movie {
     private int movie_id;

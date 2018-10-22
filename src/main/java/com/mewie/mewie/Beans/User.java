@@ -1,4 +1,4 @@
-package com.mewie.mewie;
+package com.mewie.mewie.Beans;
 
 public class User {
     private int user_id;

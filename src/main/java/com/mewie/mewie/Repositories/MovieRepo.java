@@ -1,4 +1,6 @@
-package com.mewie.mewie;
+package com.mewie.mewie.Repositories;
+
+import com.mewie.mewie.Beans.Movie;
 
 import java.util.List;
 
