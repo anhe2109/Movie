@@ -41,7 +41,7 @@ public class MovieRepoImpl extends JdbcFix implements MovieRepo {
         try {
             connection = getConnection();
             Statement statement = connection.createStatement();
-            String stringUpdate = "SELECT movies FROM movie_id=" + movie + ";";
+            String stringUpdate = "SELECT FROM movies WHERE id =" + movie + ";";
             statement.execute(stringUpdate);
             return true;
 
