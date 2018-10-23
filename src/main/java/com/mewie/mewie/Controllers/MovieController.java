@@ -55,8 +55,8 @@ public class MovieController {
         return REDIRECT_INDEX;
     }
 
-    @RequestMapping(value = "/updateMovie", method = RequestMethod.GET)
-    public String updateMovie(@ModelAttribute Movie movie){
+    @PutMapping ("/update")
+    public String updateMovie(@PathVariable Movie movie, Model model){
         LOGGER.info("Update movie was called");
         movieRepo.updateMovie(movie);
         return REDIRECT_INDEX;
