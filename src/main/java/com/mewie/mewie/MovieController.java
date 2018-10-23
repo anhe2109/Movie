@@ -17,11 +17,16 @@ public class MovieController {
     @Autowired
     MovieRepo movieRepo;
 
+    @Autowired
+    UserRepo userRepo;
+
     private static final Logger LOGGER = Logger.getLogger(MovieController.class.getName());
 
     private final String INDEX = "index";
     private final String CREATE = "create";
     private final String REDIRECT_INDEX = "redirect:/";
+    private final String MOVIES = "movies";
+
 
     @GetMapping("/")
     public String index(Model model){
@@ -33,7 +38,8 @@ public class MovieController {
     public String login(@ModelAttribute User user){
         LOGGER.info("enter was called... ");
         LOGGER.info(user.getUsername() + " " + user.getPassword());
-        return REDIRECT_INDEX;
+
+        return MOVIES;
     }
 
 
