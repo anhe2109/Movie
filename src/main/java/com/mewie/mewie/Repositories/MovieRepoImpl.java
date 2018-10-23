@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 @Repository
 public class MovieRepoImpl extends JdbcFix implements MovieRepo {
@@ -45,13 +46,32 @@ public class MovieRepoImpl extends JdbcFix implements MovieRepo {
             statement.execute(stringUpdate);
             return true;
 
-        } catch (Exception e) {e.printStackTrace();}
-        return false;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;}
     }
 
     @Override
     public Movie getMovie(int index) {
-        return null;
+        try {
+            connection = getConnection();
+            Statement statement = connection.createStatement();
+            String stringGet = "SELECT * FROM movies WHERE movie_id =" + index + ";";
+            statement.executeQuery(stringGet);
+            ResultSet result = statement.getResultSet();
+            result.next();
+
+            Movie movie = new Movie();
+            movie.setMovie_id(result.getInt("movie_id"));
+            movie.setGenre(result.getInt("genre"));
+            movie.setProductionYear(result.getInt("productionYear"));
+            movie.setTitle(result.getString("title"));
+            
+            return movie;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;}
     }
 
     @Override
