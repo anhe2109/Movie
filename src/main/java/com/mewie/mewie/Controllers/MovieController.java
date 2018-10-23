@@ -30,6 +30,9 @@ public class MovieController {
         LOGGER.info("index was called... ");
         List<Movie> movies = movieRepo.getMovies();
         model.addAttribute("movies", movies);
+
+        movieRepo.getMovie(10);
+
         return INDEX;
     }
 
