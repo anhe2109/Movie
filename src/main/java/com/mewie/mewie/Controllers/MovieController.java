@@ -31,8 +31,6 @@ public class MovieController {
         List<Movie> movies = movieRepo.getMovies();
         model.addAttribute("movies", movies);
 
-        movieRepo.getMovie(10);
-
         return INDEX;
     }
 
