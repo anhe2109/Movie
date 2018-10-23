@@ -3,8 +3,6 @@ package com.mewie.mewie.Repositories;
 import com.mewie.mewie.Beans.Movie;
 import org.springframework.stereotype.Repository;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -39,8 +37,16 @@ public class MovieRepoImpl extends JdbcFix implements MovieRepo {
     }
 
     @Override
-    public Movie updateMovie(Movie movie) {
-        return null;
+    public boolean updateMovie(Movie movie) {
+        try {
+            connection = getConnection();
+            Statement statement = connection.createStatement();
+            String stringUpdate = "SELECT movies FROM movie_id=" + movie + ";";
+            statement.execute(stringUpdate);
+            return true;
+
+        } catch (Exception e) {e.printStackTrace();}
+        return false;
     }
 
     @Override

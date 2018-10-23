@@ -21,6 +21,7 @@ public class MovieController {
     private final String INDEX = "index";
     private final String CREATE = "create";
     private final String DELETE = "delete";
+    private final String UPDATE = "update";
     private final String REDIRECT_INDEX = "redirect:/";
 
 
@@ -50,8 +51,14 @@ public class MovieController {
     @RequestMapping(value = "/deleteMovie", method = RequestMethod.GET)
     public String deleteMovie(@RequestParam(name="id")String id ){
         LOGGER.info("Delete movie was called" + id);
-
         movieRepo.deleteMovie(Integer.parseInt(id));
+        return REDIRECT_INDEX;
+    }
+
+    @RequestMapping(value = "/updateMovie", method = RequestMethod.GET)
+    public String updateMovie(@ModelAttribute Movie movie){
+        LOGGER.info("Update movie was called");
+        movieRepo.updateMovie(movie);
         return REDIRECT_INDEX;
     }
 

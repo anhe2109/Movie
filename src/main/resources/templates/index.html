@@ -23,7 +23,8 @@
             <th>Production year</th>
             <th>Genre</th>
             <th>Actors</th>
-            <th>Delete movie</th>
+            <th>Delete</th>
+            <th>Update</th>
         </tr>
         </thead>
         <tbody>
@@ -34,6 +35,7 @@
             <td th:text="${movie.genre}"/>
             <td>wp</td>
             <td><a th:href="@{/deleteMovie(id=${movie.movie_id})}"> Delete </a> </td>
+            <td><a th:href="@{/updateMovie(id=${movie.movie_id})}"> Update </a> </td>
         </tr>
         </tbody>
 

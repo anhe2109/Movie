@@ -8,7 +8,7 @@ public interface MovieRepo {
 
     boolean createMovie(Movie movie);
     boolean deleteMovie(int index);
-    Movie updateMovie(Movie movie);
+    boolean updateMovie(Movie movie);
     Movie getMovie(int index);
     List<Movie> getMovies();
 }
