@@ -1,48 +1,70 @@
 package com.mewie.mewie.Repositories;
 
 import com.mewie.mewie.Beans.User;
-import com.mewie.mewie.Repositories.UserRepo;
 import org.springframework.stereotype.Repository;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-public class UserRepolmpl implements UserRepo {
+public class UserRepolmpl extends JdbcFix implements UserRepo {
 
-    private final String url = "jdbc:mysql://gruppe-a.cnjchjz7nynx.eu-central-1.rds.amazonaws.com:3306/mewie?useSSL=false";
-    private final String username = "rewt";
-    private final String password = "supersecurepassword";
 
     @Override
     public boolean createUser(User user) {
+        try {
+            connection = getConnection();
+            Statement statement = connection.createStatement();
+            String stringInsert = "INSERT INTO users VALUES (default, '" + user.getUsername() + "', ' " + user.getPassword() + "') ;";
+            statement.execute(stringInsert);
+            closeConnection(connection);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return false;
     }
 
     @Override
     public boolean deleteUser(int index) {
+        try {
+            connection = getConnection();
+            Statement statement = connection.createStatement();
+            String stringDelete = "DELETE FROM users WHERE users_id=" + index + ";";
+            statement.execute(stringDelete);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return false;
     }
 
     @Override
-    public User updateUser(User user) {
-        return null;
+    public boolean updateUser(User user) {
+        try {
+            connection = getConnection();
+            Statement statement = connection.createStatement();
+            String stringUpdate = "SELECT FROM movies WHERE users_id =" + user + ";";
+            statement.execute(stringUpdate);
+            return true;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
     @Override
-    public User getuser(int index) {
+    public User getUser(int index) {
         return null;
     }
 
     @Override
     public List<User> getUsers() {
-        Connection connection = null;
         try {
-            connection = DriverManager.getConnection(url, username, password);
+            connection = getConnection();
             Statement statement = connection.createStatement();
 
             String stringSelect = "SELECT * FROM users";

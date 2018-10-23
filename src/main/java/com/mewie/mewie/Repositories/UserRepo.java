@@ -8,7 +8,7 @@ public interface UserRepo {
 
     boolean createUser(User user);
     boolean deleteUser(int index);
-    User updateUser(User user);
-    User getuser(int index);
+    boolean updateUser(User user);
+    User getUser(int index);
     List<User> getUsers();
 }
