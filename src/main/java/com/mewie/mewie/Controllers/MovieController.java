@@ -2,6 +2,7 @@ package com.mewie.mewie.Controllers;
 
 import com.mewie.mewie.Beans.Movie;
 import com.mewie.mewie.Repositories.MovieRepo;
+import com.mewie.mewie.Repositories.MovieRepoImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -56,9 +57,25 @@ public class MovieController {
         return REDIRECT_INDEX;
     }
 
+
+    /*@GetMapping("/updateMovie/{movie_id}")
+    public String updateMovie(@PathVariable int movie_id, Model model) {
+        LOGGER.info("Update action called...");
+        model.addAttribute("movie", movieRepo.getMovie(movie_id));
+        return REDIRECT_INDEX;
+    }*/
+
     @RequestMapping(value = "/updateMovie", method = RequestMethod.GET)
+    public String updateMovie(@RequestParam(name = "id") String id, Model model) {
+        LOGGER.info("updateMovie action called... " + id);
+        model.addAttribute("movie", movieRepo.getMovie(Integer.parseInt(id)));
+
+        return UPDATE;
+    }
+
+    @RequestMapping("/updateMovieSubmit")
     public String updateMovie(@ModelAttribute Movie movie){
-        LOGGER.info("Update movie was called");
+        LOGGER.info("updateMovieSubmit was called");
         movieRepo.updateMovie(movie);
         return REDIRECT_INDEX;
     }

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" >
+<head>
+    <meta charset="UTF-8">
+    <title>Update</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/beautiful.css}" />
+</head>
+<body>
+<div class="wrapper">
+    <header>
+        <a href="index.html">Movies</a>
+        <a href="actors.html">Actors</a>
+    </header>
+
+    <form method="post" action="#" th:action="@{/updateMovieSubmit}" th:object="${movie}"  >
+        <input type="hidden" th:field="*{movie_id}">
+        <input type="text" placeholder="title" th:field="*{title}">
+        <input type="number" min="1800" max="2099" step="1" value="2016" th:field="*{productionYear}" />
+        <input type="number" step="1" value="2016" th:field="*{genre}" />
+        <input type="submit" value="Submit">
+
+
+    </form>
+
+</div>
+</body>
+</html>

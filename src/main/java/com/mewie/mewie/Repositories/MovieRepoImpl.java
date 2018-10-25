@@ -30,7 +30,7 @@ public class MovieRepoImpl extends JdbcFix implements MovieRepo {
         try {
             connection = getConnection();
             Statement statement = connection.createStatement();
-            String stringDelete = "DELETE FROM movies WHERE movie_id=" + index + ";";
+            String stringDelete = "DELETE FROM movies  WHERE movie_id =" + index + ";";
             statement.execute(stringDelete);
             return true;
         } catch (Exception e) { e.printStackTrace();}
@@ -42,7 +42,7 @@ public class MovieRepoImpl extends JdbcFix implements MovieRepo {
         try {
             connection = getConnection();
             Statement statement = connection.createStatement();
-            String stringUpdate = "SELECT FROM movies WHERE id =" + movie + ";";
+            String stringUpdate = "UPDATE movies SET title='"+ movie.getTitle() +"', genre='" + movie.getGenre() +"', productionYear='"+ movie.getProductionYear()+ "' WHERE movie_id = " + movie.getMovie_id();
             statement.execute(stringUpdate);
             return true;
 
