@@ -4,7 +4,7 @@ public class Movie {
     private int movie_id;
     private String title;
     private int productionYear;
-    private int genre;
+    private Genre genre;
 
     @Override
     public String toString() {
@@ -17,9 +17,10 @@ public class Movie {
     }
 
     public Movie() {
+        genre = new Genre();
     }
 
-    public Movie(int id, String title, int productionYear, int genre) {
+    public Movie(int id, String title, int productionYear, Genre genre) {
         this.movie_id = id;
         this.title = title;
         this.productionYear = productionYear;
@@ -50,11 +51,11 @@ public class Movie {
         this.productionYear = productionYear;
     }
 
-    public int getGenre() {
+    public Genre getGenre() {
         return genre;
     }
 
-    public void setGenre(int genre) {
+    public void setGenre(Genre genre) {
         this.genre = genre;
     }
 }

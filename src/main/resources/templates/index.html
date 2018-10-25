@@ -30,7 +30,9 @@
         <tbody>
         <tr th:each="movie: ${movies}" id="tablerow">
             <td th:text="${movie.movie_id}"/>
-            <td th:text="${movie.title}"/>
+            <td>
+                <a th:href="@{/displayMovie(id=${movie.movie_id})}" > <p th:text="${movie.title}"/> </a>
+            </td>
             <td th:text="${movie.productionYear}"/>
             <td th:text="${movie.genre}"/>
             <td>wp</td>
