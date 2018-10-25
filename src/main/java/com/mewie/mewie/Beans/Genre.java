@@ -5,6 +5,22 @@ public class Genre {
     private String genre;
     private int genre_id;
 
+    public Genre() {
+    }
+
+    public Genre(String genre, int genre_id) {
+        this.genre = genre;
+        this.genre_id = genre_id;
+    }
+
+    @Override
+    public String toString() {
+        return "Genre{" +
+                "genre='" + genre + '\'' +
+                ", genre_id=" + genre_id +
+                '}';
+    }
+
     public String getGenre() {
         return genre;
     }

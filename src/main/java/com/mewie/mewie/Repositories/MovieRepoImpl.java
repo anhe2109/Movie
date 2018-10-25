@@ -1,5 +1,6 @@
 package com.mewie.mewie.Repositories;
 
+import com.mewie.mewie.Beans.Genre;
 import com.mewie.mewie.Beans.Movie;
 import org.springframework.stereotype.Repository;
 
@@ -17,7 +18,7 @@ public class MovieRepoImpl extends JdbcFix implements MovieRepo {
         try {
             connection = getConnection();
             Statement statement = connection.createStatement();
-            String stringInsert = "INSERT INTO movies VALUES (default, '" + movie.getTitle() + "', ' " + movie.getProductionYear() + "' , '" + movie.getGenre() + "');";
+            String stringInsert = "INSERT INTO movies VALUES (default, '" + movie.getTitle() + "', ' " + movie.getProductionYear() + "' , '" + movie.getGenre().getGenre_id() + "');";
             statement.execute(stringInsert);
             closeConnection(connection);
             return true;
@@ -42,7 +43,7 @@ public class MovieRepoImpl extends JdbcFix implements MovieRepo {
         try {
             connection = getConnection();
             Statement statement = connection.createStatement();
-            String stringUpdate = "UPDATE movies SET title='"+ movie.getTitle() +"', genre='" + movie.getGenre() +"', productionYear='"+ movie.getProductionYear()+ "' WHERE movie_id = " + movie.getMovie_id();
+            String stringUpdate = "UPDATE movies SET title='"+ movie.getTitle() +"', genre='" + movie.getGenre().getGenre_id() +"', productionYear='"+ movie.getProductionYear()+ "' WHERE movie_id = " + movie.getMovie_id();
             statement.execute(stringUpdate);
             return true;
 
@@ -63,7 +64,7 @@ public class MovieRepoImpl extends JdbcFix implements MovieRepo {
 
             Movie movie = new Movie();
             movie.setMovie_id(result.getInt("movie_id"));
-            movie.setGenre(result.getInt("genre"));
+            movie.getGenre().setGenre_id(result.getInt("genre"));
             movie.setProductionYear(result.getInt("productionYear"));
             movie.setTitle(result.getString("title"));
             
@@ -89,7 +90,8 @@ public class MovieRepoImpl extends JdbcFix implements MovieRepo {
                 int id = resultSet.getInt("movie_id");
                 String title = resultSet.getString("title");
                 int productionYear = resultSet.getInt("productionYear");
-                int genre = resultSet.getInt("genre");
+                Genre genre = new Genre();
+                genre.setGenre_id(resultSet.getInt("genre"));
 
                 movies.add(new Movie(id, title, productionYear, genre));
             }
