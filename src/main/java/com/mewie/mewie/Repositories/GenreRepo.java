@@ -8,6 +8,7 @@ import java.util.List;
 public interface GenreRepo {
 
     List<Genre> getGenres();
+    Genre getGenre(int id);
 
 
 }

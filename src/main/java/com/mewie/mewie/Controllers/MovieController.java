@@ -57,14 +57,6 @@ public class MovieController {
         return REDIRECT_INDEX;
     }
 
-
-    /*@GetMapping("/updateMovie/{movie_id}")
-    public String updateMovie(@PathVariable int movie_id, Model model) {
-        LOGGER.info("Update action called...");
-        model.addAttribute("movie", movieRepo.getMovie(movie_id));
-        return REDIRECT_INDEX;
-    }*/
-
     @RequestMapping(value = "/updateMovie", method = RequestMethod.GET)
     public String updateMovie(@RequestParam(name = "id") String id, Model model) {
         LOGGER.info("updateMovie action called... " + id);
