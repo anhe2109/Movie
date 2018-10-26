@@ -1,5 +1,6 @@
 package com.mewie.mewie.Controllers;
 
+import com.mewie.mewie.Beans.Genre;
 import com.mewie.mewie.Beans.Movie;
 import com.mewie.mewie.Repositories.MovieRepo;
 import com.mewie.mewie.Repositories.MovieRepoImpl;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -16,6 +18,9 @@ public class MovieController {
 
     @Autowired
     MovieRepo movieRepo;
+
+    @Autowired
+    GenreController genreController;
 
     private static final Logger LOGGER = Logger.getLogger(MovieController.class.getName());
 
@@ -31,6 +36,7 @@ public class MovieController {
         LOGGER.info("index was called... ");
         List<Movie> movies = movieRepo.getMovies();
         model.addAttribute("movies", movies);
+
 
         return INDEX;
     }
