@@ -42,9 +42,10 @@ public class MovieController {
     }
 
     @GetMapping("/create.html")
-    public String create(Model model){
+    public String create(Model model, Model genreDisplay){
         LOGGER.info("create was called... ");
         model.addAttribute("movie", new Movie());
+        genreDisplay.addAttribute("genres", genreController.genreRepo.getGenres());
         return CREATE;
     }
 

@@ -16,10 +16,18 @@
     <input type="text" placeholder="title" th:field="*{title}">
     <input type="number" min="1800" max="2099" step="1" value="2016" th:field="*{productionYear}" />
     <input type="number" step="1" value="2016" th:field="*{genre.genre_id}" />
+
     <input type="submit" value="Submit">
+
+    <select>
+        <option  th:each="genre: ${genres}"> <p th:text="${genre.genre}"> </option>
+    </select>
+
 
 
 </form>
+
+
 
 </div>
 </body>
