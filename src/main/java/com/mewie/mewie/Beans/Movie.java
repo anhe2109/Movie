@@ -1,10 +1,15 @@
 package com.mewie.mewie.Beans;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Movie {
     private int movie_id;
     private String title;
     private int productionYear;
     private Genre genre;
+    private List<Actor> actors;
+
 
     @Override
     public String toString() {
@@ -13,18 +18,29 @@ public class Movie {
                 ", title='" + title + '\'' +
                 ", productionYear=" + productionYear +
                 ", genre=" + genre +
+                ", actors=" + actors +
                 '}';
     }
 
     public Movie() {
         genre = new Genre();
+        actors = new ArrayList<>();
     }
 
-    public Movie(int id, String title, int productionYear, Genre genre) {
+    public Movie(int id, String title, int productionYear, Genre genre, ArrayList<Actor> actors) {
         this.movie_id = id;
         this.title = title;
         this.productionYear = productionYear;
         this.genre = genre;
+        this.actors = actors;
+    }
+
+    public List<Actor> getActors() {
+        return actors;
+    }
+
+    public void setActors(List<Actor> actors) {
+        this.actors = actors;
     }
 
     public int getMovie_id() {
