@@ -134,7 +134,7 @@ public class MovieRepoImpl extends JdbcFix implements MovieRepo {
                     "WHERE movies.movie_id =" + id;
             statement.executeQuery(stringGet);
             ResultSet result = statement.getResultSet();
-            
+
             while (result.next()){
                 String actorName = result.getString("actor_name");
                 int actorId = result.getInt("actor_id");
