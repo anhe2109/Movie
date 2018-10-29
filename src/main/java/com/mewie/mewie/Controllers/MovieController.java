@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Supplier;
 import java.util.logging.Logger;
 
 @Controller
@@ -20,7 +21,8 @@ public class MovieController {
 
     @Autowired
     MovieService movieService;
-    GenreService genreService;
+
+    @Autowired
     GenreController genreController;
 
     private static final Logger LOGGER = Logger.getLogger(MovieController.class.getName());
@@ -41,11 +43,6 @@ public class MovieController {
 
 
         return INDEX;
-    }
-    @GetMapping("/error")
-    public String error(){
-        LOGGER.info("error was called... ");
-        return ERROR;
     }
 
 
