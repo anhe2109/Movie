@@ -46,7 +46,7 @@ public class MovieController {
     public String create(Model model, Model genreDisplay){
         LOGGER.info("create was called... ");
         model.addAttribute("movie", new Movie());
-        genreDisplay.addAttribute("genres", genreController.genreRepo.getGenres());
+        genreDisplay.addAttribute("genres", genreController.genreService.getGenres());
         return CREATE;
     }
 
