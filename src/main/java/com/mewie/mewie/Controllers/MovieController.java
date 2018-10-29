@@ -4,6 +4,8 @@ import com.mewie.mewie.Beans.Genre;
 import com.mewie.mewie.Beans.Movie;
 import com.mewie.mewie.Repositories.MovieRepo;
 import com.mewie.mewie.Repositories.MovieRepoImpl;
+import com.mewie.mewie.Services.GenreService;
+import com.mewie.mewie.Services.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,9 +19,8 @@ import java.util.logging.Logger;
 public class MovieController {
 
     @Autowired
-    MovieRepo movieRepo;
-
-    @Autowired
+    MovieService movieService;
+    GenreService genreService;
     GenreController genreController;
 
     private static final Logger LOGGER = Logger.getLogger(MovieController.class.getName());
@@ -34,7 +35,7 @@ public class MovieController {
     @GetMapping("/")
     public String index(Model model){
         LOGGER.info("index was called... ");
-        List<Movie> movies = movieRepo.getMovies();
+        List<Movie> movies = movieService.getMovies();
         model.addAttribute("movies", movies);
 
 
@@ -52,7 +53,7 @@ public class MovieController {
     @RequestMapping("/saveMovie")
     public String saveMovie(@ModelAttribute Movie movie){
         LOGGER.info("saveMovie was called... ");
-        movieRepo.createMovie(movie);
+        movieService.createMovie(movie);
         return REDIRECT_INDEX;
 
     }
@@ -60,14 +61,14 @@ public class MovieController {
     @RequestMapping(value = "/deleteMovie", method = RequestMethod.GET)
     public String deleteMovie(@RequestParam(name="id")String id ){
         LOGGER.info("Delete movie was called" + id);
-        movieRepo.deleteMovie(Integer.parseInt(id));
+        movieService.deleteMovie(Integer.parseInt(id));
         return REDIRECT_INDEX;
     }
 
     @RequestMapping(value = "/updateMovie", method = RequestMethod.GET)
     public String updateMovie(@RequestParam(name = "id") String id, Model model) {
         LOGGER.info("updateMovie action called... " + id);
-        model.addAttribute("movie", movieRepo.getMovie(Integer.parseInt(id)));
+        model.addAttribute("movie", movieService.getMovie(Integer.parseInt(id)));
 
         return UPDATE;
     }
@@ -75,7 +76,7 @@ public class MovieController {
     @RequestMapping("/updateMovieSubmit")
     public String updateMovie(@ModelAttribute Movie movie){
         LOGGER.info("updateMovieSubmit was called");
-        movieRepo.updateMovie(movie);
+        movieService.updateMovie(movie);
         return REDIRECT_INDEX;
     }
 
