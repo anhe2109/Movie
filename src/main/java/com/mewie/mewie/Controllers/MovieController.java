@@ -31,6 +31,7 @@ public class MovieController {
     private final String UPDATE = "update";
     private final String REDIRECT_INDEX = "redirect:/";
     private final String Login = "login";
+    private final String ERROR = "error";
 
     @GetMapping("/")
     public String index(Model model){
@@ -41,6 +42,12 @@ public class MovieController {
 
         return INDEX;
     }
+    @GetMapping("/error")
+    public String error(){
+        LOGGER.info("error was called... ");
+        return ERROR;
+    }
+
 
     @GetMapping("/create.html")
     public String create(Model model, Model genreDisplay){
