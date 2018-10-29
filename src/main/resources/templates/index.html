@@ -36,7 +36,7 @@
             </td>
             <td th:text="${movie.productionYear}"/>
             <td th:text="${movie.genre.genre}"/>
-            <td>wp</td>
+            <td><p th:text="${movie.actors}"/></td>
             <td><a th:href="@{/deleteMovie(id=${movie.movie_id})}"> Delete </a> </td>
             <td><a th:href="@{/updateMovie(id=${movie.movie_id})}"> Update </a> </td>
         </tr>

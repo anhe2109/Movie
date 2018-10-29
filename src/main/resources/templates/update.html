@@ -15,7 +15,7 @@
     <form method="post" action="#" th:action="@{/updateMovieSubmit}" th:object="${movie}"  >
         <input type="hidden" th:field="*{movie_id}">
         <input type="text" placeholder="title" th:field="*{title}">
-        <input type="number" min="1800" max="2099" step="1" value="2016" th:field="*{productionYear}" />
+        <input type="number" min="1800" max="2099" step="1" value="2016" th:field="*{productionYear}"  />
 
         <select th:field="*{genre.genre_id}"  >
             <option th:each="genre: ${genres}" th:value="${genre.genre_id}" > <p th:text="${genre.genre}"/> </option>
