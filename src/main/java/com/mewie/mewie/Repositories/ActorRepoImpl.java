@@ -90,7 +90,38 @@ public class ActorRepoImpl extends JdbcFix implements ActorRepo {
 
     @Override
     public List<Actor> getActors() {
-        return null;
+        try {
+            connection = getConnection();
+            Statement statement = connection.createStatement();
+
+            String stringSelect =
+                    "SELECT\n" +
+                            "       actor_id,\n" +
+                            "       actor_name,\n" +
+                            "       birthYear,\n" +
+                            "FROM mewie.actors\n";
+            ResultSet resultSet = statement.executeQuery(stringSelect);
+
+            List<Actor> actors = new ArrayList<>();
+
+            while (resultSet.next()) {
+                int id = resultSet.getInt("movie_id");
+                String title = resultSet.getString("actor_name");
+                int birthYear = resultSet.getInt("birthYear");
+                ArrayList<Movie> movies = getMovies(id);
+                actors.add(new Actor(id, title, birthYear, movies));
+            }
+            return actors;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+            closeConnection(connection);
+        }
+
+
+
     }
 
 
