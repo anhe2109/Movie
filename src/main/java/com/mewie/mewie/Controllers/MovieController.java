@@ -19,6 +19,9 @@ public class MovieController {
     @Autowired
     GenreController genreController;
 
+    @Autowired
+    ActorController actorController;
+
     private static final Logger LOGGER = Logger.getLogger(MovieController.class.getName());
 
     private final String INDEX = "index";
@@ -41,10 +44,11 @@ public class MovieController {
 
 
     @GetMapping("/create.html")
-    public String create(Model model, Model genreDisplay){
+    public String create(Model model, Model genreDisplay, Model actorDisplay){
         LOGGER.info("create was called... ");
         model.addAttribute("movie", new Movie());
         genreDisplay.addAttribute("genres", genreController.genreService.getGenres());
+        actorDisplay.addAttribute("actors", actorController.actorService.getActors());
         return CREATE;
     }
 
