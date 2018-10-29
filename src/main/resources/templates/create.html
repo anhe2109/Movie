@@ -18,7 +18,10 @@
 
     <select th:field="*{genre.genre_id}"  >
         <option th:each="genre: ${genres}" th:value="${genre.genre_id}" > <p th:text="${genre.genre}"/> </option>
+    </select>
 
+    <select multiple th:field="*{actors}">
+        <option th:each="actor: ${actors}" th:value="${actor.actor_id}" > <p th:text="${actor.name}"/> </option>
     </select>
 
     <input type="submit" value="Submit">

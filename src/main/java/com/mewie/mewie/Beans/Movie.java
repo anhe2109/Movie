@@ -43,6 +43,16 @@ public class Movie {
         this.actors = actors;
     }
 
+    public void setActors(int[] actorsId) {
+
+
+        for (int i = 0; actorsId.length > i; i++){
+            actors.add(new Actor(actorsId[i], null, 0, null));
+        }
+
+        this.actors = actors;
+    }
+
     public int getMovie_id() {
         return movie_id;
     }
