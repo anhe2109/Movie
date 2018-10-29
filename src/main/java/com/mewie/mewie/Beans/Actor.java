@@ -1,9 +1,21 @@
 package com.mewie.mewie.Beans;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Actor {
     private int Actor_id;
     private String name;
     private int birthYear;
+    private List<Movie> movies;
+
+    public List<Movie> getMovies() {
+        return movies;
+    }
+
+    public void setMovies(List<Movie> movies) {
+        this.movies = movies;
+    }
 
     @Override
     public String toString() {
@@ -11,16 +23,19 @@ public class Actor {
                 "Actor_id=" + Actor_id +
                 ", name='" + name + '\'' +
                 ", birthYear=" + birthYear +
+                ", movies=" + movies +
                 '}';
     }
 
     public Actor() {
+        movies = new ArrayList<>();
     }
 
-    public Actor(int actor_id, String name, int birthYear) {
+    public Actor(int actor_id, String name, int birthYear, List<Movie> movies) {
         Actor_id = actor_id;
         this.name = name;
         this.birthYear = birthYear;
+        this.movies = movies;
     }
 
     public int getActor_id() {
