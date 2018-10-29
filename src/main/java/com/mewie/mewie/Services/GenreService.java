@@ -1,7 +1,7 @@
 package com.mewie.mewie.Services;
 
 import com.mewie.mewie.Beans.Genre;
-import com.mewie.mewie.Repositories.GenreRepo;
+import com.mewie.mewie.Repositories.Interfaces.GenreRepo;
 import com.mewie.mewie.Repositories.GenreRepoImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

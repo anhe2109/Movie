@@ -1,6 +1,7 @@
 package com.mewie.mewie.Repositories;
 
 import com.mewie.mewie.Beans.User;
+import com.mewie.mewie.Repositories.Interfaces.UserRepo;
 import org.springframework.stereotype.Repository;
 
 import java.sql.ResultSet;

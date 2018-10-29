@@ -1,7 +1,9 @@
 package com.mewie.mewie.Repositories;
 
+import com.mewie.mewie.Beans.Actor;
 import com.mewie.mewie.Beans.Genre;
 import com.mewie.mewie.Beans.Movie;
+import com.mewie.mewie.Repositories.Interfaces.MovieRepo;
 import org.springframework.stereotype.Repository;
 
 import java.sql.ResultSet;
@@ -9,7 +11,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
 
 @Repository
 public class MovieRepoImpl extends JdbcFix implements MovieRepo {
@@ -106,8 +107,8 @@ public class MovieRepoImpl extends JdbcFix implements MovieRepo {
                 int productionYear = resultSet.getInt("productionYear");
                 Genre genre = new Genre();
                 genre.setGenre(resultSet.getString("genres.genre"));
-
-                movies.add(new Movie(id, title, productionYear, genre));
+                ArrayList<Actor> actors = new ArrayList<>(); //TODO VLC fix this.
+                movies.add(new Movie(id, title, productionYear, genre, actors));
             }
             return movies;
 

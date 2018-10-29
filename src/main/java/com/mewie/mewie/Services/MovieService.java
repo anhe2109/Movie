@@ -1,7 +1,7 @@
 package com.mewie.mewie.Services;
 
 import com.mewie.mewie.Beans.Movie;
-import com.mewie.mewie.Repositories.MovieRepo;
+import com.mewie.mewie.Repositories.Interfaces.MovieRepo;
 import com.mewie.mewie.Repositories.MovieRepoImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
