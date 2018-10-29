@@ -24,7 +24,7 @@ public class MovieController {
     private final String DELETE = "delete";
     private final String UPDATE = "update";
     private final String REDIRECT_INDEX = "redirect:/";
-
+    private final String Login = "login";
 
     @GetMapping("/")
     public String index(Model model){
