@@ -15,11 +15,34 @@
 <form method="post" action="#" th:action="@{/saveMovie}" th:object="${movie}"  >
     <input type="text" placeholder="title" th:field="*{title}">
     <input type="number" min="1800" max="2099" step="1" value="2016" th:field="*{productionYear}" />
-    <input type="number" step="1" value="2016" th:field="*{genre.genre_id}" />
+    <input type="number" min="1"  step="1" value="2016" th:field="*{genre.genre_id}" />
+    
+
     <input type="submit" value="Submit">
+
+    <table>
+        <thead>
+            <tr>
+                <td>ID</td>
+                <td>Genre</td>
+            </tr>
+        </thead>
+        <tbody>
+        <tr th:each="genre: ${genres}">
+            <td th:text="${genre.genre_id}"/>
+            <td th:text="${genre.genre}"/>
+        </tr>
+
+        </tbody>
+    </table>
+
+
+
 
 
 </form>
+
+
 
 </div>
 </body>

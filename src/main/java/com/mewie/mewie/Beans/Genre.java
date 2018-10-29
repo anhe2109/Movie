@@ -2,13 +2,13 @@ package com.mewie.mewie.Beans;
 
 public class Genre {
 
-    private String genre;
     private int genre_id;
+    private String genre;
 
     public Genre() {
     }
 
-    public Genre(String genre, int genre_id) {
+    public Genre(int genre_id, String genre) {
         this.genre = genre;
         this.genre_id = genre_id;
     }
@@ -22,6 +22,10 @@ public class Genre {
     }
 
     public String getGenre() {
+        if (genre == null){
+            genre = "Not defined.";
+        }
+
         return genre;
     }
 

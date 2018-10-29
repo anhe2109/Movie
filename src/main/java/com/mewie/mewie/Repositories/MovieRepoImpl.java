@@ -5,6 +5,7 @@ import com.mewie.mewie.Beans.Movie;
 import org.springframework.stereotype.Repository;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
@@ -72,7 +73,13 @@ public class MovieRepoImpl extends JdbcFix implements MovieRepo {
 
         } catch (Exception e) {
             e.printStackTrace();
-            return null;}
+            return null;} finally {
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     @Override
@@ -81,7 +88,14 @@ public class MovieRepoImpl extends JdbcFix implements MovieRepo {
             connection = getConnection();
             Statement statement = connection.createStatement();
 
-            String stringSelect = "SELECT * FROM movies";
+            String stringSelect =
+                    "SELECT\n" +
+                            "       movie_id,\n" +
+                            "       title,\n" +
+                            "       productionYear,\n" +
+                            "       genres.genre\n" +
+                            "FROM mewie.movies\n" +
+                            "INNER JOIN mewie.genres ON mewie.genres.genre_id = mewie.movies.genre";
             ResultSet resultSet = statement.executeQuery(stringSelect);
 
             List<Movie> movies = new ArrayList<>();
@@ -91,7 +105,7 @@ public class MovieRepoImpl extends JdbcFix implements MovieRepo {
                 String title = resultSet.getString("title");
                 int productionYear = resultSet.getInt("productionYear");
                 Genre genre = new Genre();
-                genre.setGenre_id(resultSet.getInt("genre"));
+                genre.setGenre(resultSet.getString("genres.genre"));
 
                 movies.add(new Movie(id, title, productionYear, genre));
             }
