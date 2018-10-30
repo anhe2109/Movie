@@ -27,8 +27,6 @@ public class MovieRepoImpl extends JdbcFix implements MovieRepo {
                 fkString = createActorsFk(movie);
             }
 
-            System.out.println(stringInsert);
-            System.out.println(fkString);
             statement.execute(stringInsert);
             statement.execute(fkString);
 
