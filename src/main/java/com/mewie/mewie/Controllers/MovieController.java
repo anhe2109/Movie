@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.function.Supplier;
 import java.util.logging.Logger;
 
 @Controller
@@ -55,6 +56,7 @@ public class MovieController {
     @RequestMapping("/saveMovie")
     public String saveMovie(@ModelAttribute Movie movie){
         LOGGER.info("saveMovie was called... ");
+        System.out.println(movie);
         movieService.createMovie(movie);
         return REDIRECT_INDEX;
 
