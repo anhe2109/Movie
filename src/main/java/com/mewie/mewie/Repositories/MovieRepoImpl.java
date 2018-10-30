@@ -21,11 +21,17 @@ public class MovieRepoImpl extends JdbcFix implements MovieRepo {
             connection = getConnection();
             Statement statement = connection.createStatement();
 
-            String stringInsert = "INSERT INTO movies VALUE (default, '" + movie.getTitle() + "'," + movie.getProductionYear() + ", "+ movie.getGenre() +" );";
+            String stringInsert = "INSERT INTO movies VALUE (default, '" + movie.getTitle() + "', " + movie.getProductionYear() + ", "+ movie.getGenre().getGenre_id() +" ); ";
+            String fkString = "";
             if (movie.getActors().size() > 0){
-                stringInsert += createActorsFk(movie);
+                fkString = createActorsFk(movie);
             }
+
+            System.out.println(stringInsert);
+            System.out.println(fkString);
             statement.execute(stringInsert);
+            statement.execute(fkString);
+
 
             closeConnection(connection);
             return true;
@@ -33,9 +39,9 @@ public class MovieRepoImpl extends JdbcFix implements MovieRepo {
         return false;
     }
     private String createActorsFk(Movie movie){
-        String result = "INSERT INTO moviesactors VALUES (default, LAST_INSERT_ID(), " + movie.getActors().get(0) +")";
+        String result = "INSERT INTO moviesactors VALUES (default, LAST_INSERT_ID(), " + movie.getActors().get(0).getActor_id() +")";
         for (int i = 1; movie.getActors().size() > i; i++ ){
-            result = ",(default, LAST_INSERT_ID(), " + movie.getActors().get(i) +")";
+            result += ",(default, LAST_INSERT_ID(), " + movie.getActors().get(i).getActor_id() +")";
         }
         result += ";";
         return result;
