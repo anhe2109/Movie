@@ -48,7 +48,7 @@ public class ActorRepoImpl extends JdbcFix implements ActorRepo {
         try {
             connection = getConnection();
             Statement statement = connection.createStatement();
-            String stringUpdate = "UPDATE actors SET actor_name='" + actor.getName() + "', birthYear='" + actor.getBirthYear() + "' WHERE actor_id = " + actor.getActor_id();
+            String stringUpdate = "UPDATE actors SET actor_name='" + actor.getName() + "', yearOfBirth='" + actor.getBirthYear() + "' WHERE actor_id = " + actor.getActor_id();
             statement.execute(stringUpdate);
             return true;
 
@@ -70,7 +70,7 @@ public class ActorRepoImpl extends JdbcFix implements ActorRepo {
 
             Actor actor = new Actor();
             actor.setActor_id(result.getInt("actor_id"));
-            actor.setBirthYear(result.getInt("birthYear"));
+            actor.setBirthYear(result.getInt("yearOfBirth"));
             actor.setName(result.getString("actor_name"));
 
             return actor;
