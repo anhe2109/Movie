@@ -1,7 +1,9 @@
 package com.mewie.mewie.Repositories;
 
+import com.mewie.mewie.Beans.Actor;
 import com.mewie.mewie.Beans.Genre;
 import com.mewie.mewie.Beans.Movie;
+import com.mewie.mewie.Repositories.Interfaces.MovieRepo;
 import org.springframework.stereotype.Repository;
 
 import java.sql.ResultSet;
@@ -9,7 +11,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
 
 @Repository
 public class MovieRepoImpl extends JdbcFix implements MovieRepo {
@@ -106,8 +107,8 @@ public class MovieRepoImpl extends JdbcFix implements MovieRepo {
                 int productionYear = resultSet.getInt("productionYear");
                 Genre genre = new Genre();
                 genre.setGenre(resultSet.getString("genres.genre"));
-
-                movies.add(new Movie(id, title, productionYear, genre));
+                ArrayList<Actor> actors = getActors(id);
+                movies.add(new Movie(id, title, productionYear, genre, actors));
             }
             return movies;
 
@@ -118,5 +119,38 @@ public class MovieRepoImpl extends JdbcFix implements MovieRepo {
             closeConnection(connection);
         }
 
+
+
+    }
+    ArrayList<Actor> getActors(int id) {
+        ArrayList<Actor> actors = new ArrayList<>();
+        try {
+            connection = getConnection();
+            Statement statement = connection.createStatement();
+            String stringGet = "SELECT actor_name, actors.actor_id\n" +
+                    "FROM movies\n" +
+                    "INNER JOIN moviesactors ON moviesactors.movie_id = movies.movie_id\n" +
+                    "INNER JOIN actors ON actors.actor_id = moviesactors.actor_id\n" +
+                    "WHERE movies.movie_id =" + id;
+            statement.executeQuery(stringGet);
+            ResultSet result = statement.getResultSet();
+
+            while (result.next()){
+                String actorName = result.getString("actor_name");
+                int actorId = result.getInt("actor_id");
+                actors.add(new Actor(actorId, actorName, 0, null));
+            }
+
+            return actors;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;} finally {
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

@@ -1,4 +1,4 @@
-package com.mewie.mewie.Repositories;
+package com.mewie.mewie.Repositories.Interfaces;
 
 import com.mewie.mewie.Beans.Genre;
 

@@ -1,6 +1,7 @@
 package com.mewie.mewie.Repositories;
 
 import com.mewie.mewie.Beans.Genre;
+import com.mewie.mewie.Repositories.Interfaces.GenreRepo;
 import org.springframework.stereotype.Repository;
 
 import java.sql.ResultSet;
