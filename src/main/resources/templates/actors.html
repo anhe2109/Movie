@@ -13,6 +13,38 @@
         <a href="actors.html">Actors</a>
         <a href="login.html">Login</a>
     </header>
-</div>
-</body>
-</html>
+
+    <a href="createActor.html">Create actor</a>
+
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Birth year</th>
+            <th>Movies</th>
+            <th>Delete</th>
+            <th>Update</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="actor: ${actors}" id="tablerow">
+            <td th:text="${actor.actor_id}"/>
+            <td>
+                <a th:href="@{/displayActor(id=${actor.actor_id})}" > <p th:text="${actor.name}"/> </a>
+            </td>
+            <td th:text="${actor.birthYear}"/>
+            <!--  <td><p th:text="${movie.actors}"/></td> -->
+            <td><p th:each="movie: ${actor.movies}" th:text="${movie.title}"/></td>
+
+
+            <!-- <td><a th:href="@{/deleteMovie(id=${actor.movie_id})}"> Delete </a> </td>
+             <td><a th:href="@{/updateMovie(id=${actor.movie_id})}"> Update </a> </td> -->
+         </tr>
+         </tbody>
+
+
+     </table>
+ </div>
+ </body>
+ </html>
