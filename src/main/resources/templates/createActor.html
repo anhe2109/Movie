@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" >
+<head>
+    <meta charset="UTF-8">
+    <title>Create</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/beautiful.css}" />
+</head>
+<body>
+<div class="wrapper">
+    <header>
+        <a href="/">Movies</a>
+        <a href="actors.html">Actors</a>
+    </header>
+
+    <form method="post" action="#" th:action="@{/saveActor}" th:object="${actor}"  >
+        <input type="text" placeholder="name" th:field="*{name}">
+        <input type="number" min="1800" max="2099" step="1" value="2016" th:field="*{birthYear}" />
+
+        <select multiple th:field="*{movies}">
+            <option th:each="movie: ${movies}" th:value="${movie.movie_id}" > <p th:text="${movie.title}"/> </option>
+        </select>
+        <!--
+        <select multiple th:field="*{actors}">
+            <option th:each="actor: ${actors}" th:value="${actor.actor_id}" > <p th:text="${actor.name}"/> </option>
+        </select>
+        -->
+
+        <input type="submit" value="Submit">
+
+
+
+
+    </form>
+
+
+
+</div>
+</body>
+</html>

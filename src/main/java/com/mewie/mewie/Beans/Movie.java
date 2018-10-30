@@ -38,9 +38,21 @@ public class Movie {
     public List<Actor> getActors() {
         return actors;
     }
-
+/*
     public void setActors(List<Actor> actors) {
         this.actors = actors;
+    }
+*/
+    public void setActors(List<String> actors) {
+        List<Actor> generatedActors = new ArrayList<>();
+
+        for(String s : actors){
+            int value = Integer.valueOf(s);
+            generatedActors.add(new Actor(value));
+        }
+        this.actors = generatedActors;
+
+
     }
 
     public void setActors(int[] actorsIds) {

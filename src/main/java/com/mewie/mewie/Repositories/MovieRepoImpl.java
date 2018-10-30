@@ -20,20 +20,43 @@ public class MovieRepoImpl extends JdbcFix implements MovieRepo {
         try {
             connection = getConnection();
             Statement statement = connection.createStatement();
-            String stringInsert = "INSERT INTO movies VALUES (default, '" + movie.getTitle() + "', ' " + movie.getProductionYear() + "' , '" + movie.getGenre().getGenre_id() + "');";
+
+            String stringInsert = "INSERT INTO movies VALUE (default, '" + movie.getTitle() + "', " + movie.getProductionYear() + ", "+ movie.getGenre().getGenre_id() +" ); ";
+            String fkString = "";
+            if (movie.getActors().size() > 0){
+                fkString = createActorsFk(movie);
+            }
+
+            System.out.println(stringInsert);
+            System.out.println(fkString);
             statement.execute(stringInsert);
+            statement.execute(fkString);
+
+
             closeConnection(connection);
             return true;
         } catch (Exception e) { e.printStackTrace();}
         return false;
     }
+    private String createActorsFk(Movie movie){
+        String result = "INSERT INTO moviesactors VALUES (default, LAST_INSERT_ID(), " + movie.getActors().get(0).getActor_id() +")";
+        for (int i = 1; movie.getActors().size() > i; i++ ){
+            result += ",(default, LAST_INSERT_ID(), " + movie.getActors().get(i).getActor_id() +")";
+        }
+        result += ";";
+        return result;
+    }
+
+
 
     @Override
     public boolean deleteMovie(int index) {
         try {
             connection = getConnection();
             Statement statement = connection.createStatement();
+            String stringDeleteFk = "DELETE FROM moviesactors WHERE movie_id =" + index + ";";
             String stringDelete = "DELETE FROM movies  WHERE movie_id =" + index + ";";
+            statement.execute(stringDeleteFk);
             statement.execute(stringDelete);
             return true;
         } catch (Exception e) { e.printStackTrace();}
