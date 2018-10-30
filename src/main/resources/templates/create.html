@@ -23,6 +23,11 @@
     <select multiple th:field="*{actors}">
         <option th:each="actor: ${actors}" th:value="${actor.actor_id}" > <p th:text="${actor.name}"/> </option>
     </select>
+    <!--
+    <select multiple th:field="*{actors}">
+        <option th:each="actor: ${actors}" th:value="${actor.actor_id}" > <p th:text="${actor.name}"/> </option>
+    </select>
+    -->
 
     <input type="submit" value="Submit">
 
