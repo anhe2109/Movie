@@ -34,6 +34,7 @@ public class MovieController {
     private final String Login = "login";
     private final String ERROR = "error";
     private final String ACTORS = "actors";
+    private final String CREATE_ACTOR = "createActor";
 
 
     @GetMapping("/")
@@ -93,6 +94,21 @@ public class MovieController {
         model.addAttribute("actors", actors);
 
         return ACTORS;
+    }
+
+    @GetMapping("/createActor.html")
+    public String createActor(Model model, Model movieDisplay){
+        LOGGER.info("create actor was called... ");
+        model.addAttribute("actor", new Actor());
+        movieDisplay.addAttribute("actors", movieService.getMovies());
+        return CREATE_ACTOR;
+    }
+
+    @RequestMapping("/saveActor")
+    public String saveActor(@ModelAttribute Actor actor) {
+        LOGGER.info("saveActor was called... ");
+        actorController.actorService.createActor(actor);
+        return REDIRECT_INDEX;
     }
 
 }
