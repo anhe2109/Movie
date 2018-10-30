@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Actor {
-    private int Actor_id;
+    private int actor_id;
     private String name;
     private int birthYear;
     private List<Movie> movies;
@@ -20,7 +20,7 @@ public class Actor {
     @Override
     public String toString() {
         return "Actor{" +
-                "Actor_id=" + Actor_id +
+                "actor_id=" + actor_id +
                 ", name='" + name + '\'' +
                 ", birthYear=" + birthYear +
                 ", movies=" + movies +
@@ -32,18 +32,22 @@ public class Actor {
     }
 
     public Actor(int actor_id, String name, int birthYear, List<Movie> movies) {
-        Actor_id = actor_id;
+        this.actor_id = actor_id;
         this.name = name;
         this.birthYear = birthYear;
         this.movies = movies;
     }
 
+    public Actor(int actor_id){
+        this.actor_id = actor_id;
+    }
+
     public int getActor_id() {
-        return Actor_id;
+        return actor_id;
     }
 
     public void setActor_id(int actor_id) {
-        Actor_id = actor_id;
+        this.actor_id = actor_id;
     }
 
     public String getName() {

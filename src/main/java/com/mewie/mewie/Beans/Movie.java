@@ -43,14 +43,22 @@ public class Movie {
         this.actors = actors;
     }
 
-    public void setActors(int[] actorsId) {
-
-
-        for (int i = 0; actorsId.length > i; i++){
-            actors.add(new Actor(actorsId[i], null, 0, null));
+    public void setActors(int[] actorsIds) {
+        for (int i = 0; actorsIds.length > i; i++){
+            actors.add(new Actor(actorsIds[i]));
         }
-
         this.actors = actors;
+    }
+    public void setActors(String[] actorsIds) {
+        for (int i = 0; actorsIds.length > i; i++){
+            actors.add(new Actor(Integer.parseInt(actorsIds[i])));
+        }
+        this.actors = actors;
+    }
+
+
+    public void setActors(int id){
+        actors.add(new Actor(id,"",0,null));
     }
 
     public int getMovie_id() {
