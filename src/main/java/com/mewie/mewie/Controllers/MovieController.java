@@ -1,6 +1,8 @@
 package com.mewie.mewie.Controllers;
 
+import com.mewie.mewie.Beans.Actor;
 import com.mewie.mewie.Beans.Movie;
+import com.mewie.mewie.Services.ActorService;
 import com.mewie.mewie.Services.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -32,6 +34,9 @@ public class MovieController {
     private final String REDIRECT_INDEX = "redirect:/";
     private final String Login = "login";
     private final String ERROR = "error";
+    private final String ACTORS = "actors";
+    private final String CREATE_ACTOR = "createActor";
+
 
     @GetMapping("/")
     public String index(Model model){
@@ -84,5 +89,28 @@ public class MovieController {
         return REDIRECT_INDEX;
     }
 
+    @GetMapping("/actors.html")
+    public String actors(Model model){
+        LOGGER.info("actors was called . . . ");
+        List<Actor> actors = actorController.actorService.getActors();
+        model.addAttribute("actors", actors);
+
+        return ACTORS;
+    }
+
+    @GetMapping("/createActor.html")
+    public String createActor(Model model, Model movieDisplay){
+        LOGGER.info("create actor was called... ");
+        model.addAttribute("actor", new Actor());
+        movieDisplay.addAttribute("actors", movieService.getMovies());
+        return CREATE_ACTOR;
+    }
+
+    @RequestMapping("/saveActor")
+    public String saveActor(@ModelAttribute Actor actor) {
+        LOGGER.info("saveActor was called... ");
+        actorController.actorService.createActor(actor);
+        return REDIRECT_INDEX;
+    }
 
 }
