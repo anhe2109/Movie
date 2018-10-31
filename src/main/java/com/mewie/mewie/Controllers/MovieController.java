@@ -50,10 +50,11 @@ public class MovieController {
         return INDEX;
     }
 
-    @RequestMapping(value = "/display", method = RequestMethod.GET)
-    public String displayMovie(@RequestParam(name="id")String id ){
+    @RequestMapping(value = "/displayMovie", method = RequestMethod.GET)
+    public String displayMovie(@RequestParam(name="id")String id, Model model){
         LOGGER.info("Display movie was called" + id);
-        movieService.getMovie(Integer.parseInt(id));
+        Movie movie = movieService.getMovie(Integer.parseInt(id));
+        model.addAttribute("movie", movie);
         return DISPLAY;
     }
 
