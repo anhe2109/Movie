@@ -75,10 +75,11 @@ public class MovieController {
     }
 
     @RequestMapping(value = "/updateMovie", method = RequestMethod.GET)
-    public String updateMovie(@RequestParam(name = "id") String id, Model model, Model genreDisplay) {
+    public String updateMovie(@RequestParam(name = "id") String id, Model model, Model genreDisplay, Model movieDisplay) {
         LOGGER.info("updateMovie action called... " + id);
         model.addAttribute("movie", movieService.getMovie(Integer.parseInt(id)));
         genreDisplay.addAttribute("genres", genreController.genreService.getGenres());
+        movieDisplay.addAttribute("actors", actorController.actorService.getActors());
         return UPDATE;
     }
 
