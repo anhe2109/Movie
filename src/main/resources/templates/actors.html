@@ -38,13 +38,15 @@
             <td><p th:each="movie: ${actor.movies}" th:text="${movie.title}"/></td>
 
 
-            <td><a th:href="@{/deleteMovie(id=${actor.actor_id})}"> Delete </a> </td>
-            <td><a th:href="@{/updateMovie(id=${actor.actor_id})}"> Update </a> </td>
+            <td><a th:href="@{/deleteActor(id=${actor.actor_id})}"> Delete </a> </td>
+            <td><a th:href="@{/updateActor(id=${actor.actor_id})}"> Update </a> </td>
          </tr>
          </tbody>
 
 
      </table>
+
+
  </div>
  </body>
  </html>

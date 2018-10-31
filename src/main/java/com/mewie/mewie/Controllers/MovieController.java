@@ -113,4 +113,11 @@ public class MovieController {
         return REDIRECT_INDEX;
     }
 
+    @RequestMapping(value = "/deleteActor", method = RequestMethod.GET)
+    public String deleteActor(@RequestParam(name="id")String id ){
+        actorController.actorService.deleteActor(Integer.parseInt(id));
+        LOGGER.info("Delete actor was called " + id);
+        return REDIRECT_INDEX;
+    }
+
 }
