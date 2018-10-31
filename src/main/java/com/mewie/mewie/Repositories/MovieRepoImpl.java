@@ -87,14 +87,24 @@ public class MovieRepoImpl extends JdbcFix implements MovieRepo {
         try {
             connection = getConnection();
             Statement statement = connection.createStatement();
-            String stringGet = "SELECT * FROM movies WHERE movie_id =" + index + ";";
+            String stringGet = "SELECT movie_id, \n" +
+                    "       title, \n" +
+                    "       productionYear, \n" +
+                    "       genre_id, \n" +
+                    "       genres.genre \n" +
+                    "FROM mewie.movies \n" +
+                    "INNER JOIN mewie.genres \n" +
+                    "ON mewie.genres.genre_id = mewie.movies.genre \n" +
+                    "WHERE movie_id ="+ index +";";
+            System.out.println(stringGet);
             statement.executeQuery(stringGet);
             ResultSet result = statement.getResultSet();
             result.next();
 
             Movie movie = new Movie();
             movie.setMovie_id(result.getInt("movie_id"));
-            movie.getGenre().setGenre_id(result.getInt("genre"));
+            movie.getGenre().setGenre_id(result.getInt("genre_id"));
+            movie.getGenre().setGenre(result.getString("genre"));
             movie.setProductionYear(result.getInt("productionYear"));
             movie.setTitle(result.getString("title"));
 
