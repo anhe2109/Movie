@@ -20,6 +20,9 @@ public class MovieController {
     MovieService movieService;
 
     @Autowired
+    ActorService actorService;
+
+    @Autowired
     GenreController genreController;
 
     @Autowired
@@ -37,6 +40,7 @@ public class MovieController {
     private final String ACTORS = "actors";
     private final String CREATE_ACTOR = "createActor";
     private final String DISPLAY = "display";
+    private final String UPDATE_ACTOR = "updateActor";
     private final String REDIRECT_ACTORS = "redirect:/actors.html";
 
 
@@ -127,9 +131,23 @@ public class MovieController {
 
     @RequestMapping(value = "/deleteActor", method = RequestMethod.GET)
     public String deleteActor(@RequestParam(name="id")String id ){
-        actorController.actorService.deleteActor(Integer.parseInt(id));
         LOGGER.info("Delete actor was called " + id);
-        return REDIRECT_INDEX;
+        actorController.actorService.deleteActor(Integer.parseInt(id));
+        return REDIRECT_ACTORS;
+    }
+
+    @RequestMapping(value = "/updateActor", method = RequestMethod.GET)
+    public String updateMovie(@RequestParam(name = "id") String id, Model model) {
+        LOGGER.info("updateActor action called... " + id);
+        model.addAttribute("actor", actorService.getActor(Integer.parseInt(id)));
+        return UPDATE_ACTOR;
+    }
+
+    @RequestMapping("/updateActorSubmit")
+    public String updateMovie(@ModelAttribute Actor actor){
+        LOGGER.info("updateMovieSubmit was called");
+        actorService.updateActor(actor);
+        return REDIRECT_ACTORS;
     }
 
 }
