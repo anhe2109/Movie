@@ -68,6 +68,13 @@ public class MovieRepoImpl extends JdbcFix implements MovieRepo {
             Statement statement = connection.createStatement();
             String stringUpdate = "UPDATE movies SET title='"+ movie.getTitle() +"', genre='" + movie.getGenre().getGenre_id() +"', productionYear='"+ movie.getProductionYear()+ "' WHERE movie_id = " + movie.getMovie_id();
             statement.execute(stringUpdate);
+            String deleteActors = "DELETE FROM moviesactors WHERE movie_id =" + movie.getMovie_id() + ";";
+            statement.execute(deleteActors);
+
+            for (Actor a: movie.getActors()){
+                String addActor = "INSERT INTO moviesactors value (default, "+ movie.getMovie_id() + ", "+ a.getActor_id() +");";
+                statement.execute(addActor);
+            }
             return true;
 
         } catch (Exception e) {
