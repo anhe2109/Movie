@@ -19,7 +19,7 @@ public class ActorRepoImpl extends JdbcFix implements ActorRepo {
         try {
             connection = getConnection();
             Statement statement = connection.createStatement();
-            String stringInsert = "INSERT INTO actors VALUES (default,'" + actor.getName() + "','" + actor.getBirthYear() + "','" + actor.getMovies() + "');";
+            String stringInsert = "INSERT INTO actors VALUES (default,'" + actor.getName() + "','" + actor.getBirthYear() + "');";
             statement.execute(stringInsert);
             closeConnection(connection);
             return true;

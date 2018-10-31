@@ -36,6 +36,7 @@ public class MovieController {
     private final String ERROR = "error";
     private final String ACTORS = "actors";
     private final String CREATE_ACTOR = "createActor";
+    private final String REDIRECT_ACTORS = "redirect:/actors.html";
 
 
     @GetMapping("/")
@@ -110,7 +111,7 @@ public class MovieController {
     public String saveActor(@ModelAttribute Actor actor) {
         LOGGER.info("saveActor was called... ");
         actorController.actorService.createActor(actor);
-        return REDIRECT_INDEX;
+        return REDIRECT_ACTORS;
     }
 
     @RequestMapping(value = "/deleteActor", method = RequestMethod.GET)
