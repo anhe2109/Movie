@@ -16,14 +16,7 @@
         <input type="text" placeholder="name" th:field="*{name}">
         <input type="number" min="1800" max="2099" step="1" value="2016" th:field="*{birthYear}" />
 
-        <select multiple th:field="*{movies}">
-            <option th:each="movie: ${movies}" th:value="${movie.movie_id}" > <p th:text="${movie.title}"/> </option>
-        </select>
-        <!--
-        <select multiple th:field="*{actors}">
-            <option th:each="actor: ${actors}" th:value="${actor.actor_id}" > <p th:text="${actor.name}"/> </option>
-        </select>
-        -->
+        
 
         <input type="submit" value="Submit">
 
