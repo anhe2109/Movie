@@ -36,6 +36,7 @@ public class MovieController {
     private final String ERROR = "error";
     private final String ACTORS = "actors";
     private final String CREATE_ACTOR = "createActor";
+    private final String DISPLAY = "display";
     private final String REDIRECT_ACTORS = "redirect:/actors.html";
 
 
@@ -48,6 +49,14 @@ public class MovieController {
 
         return INDEX;
     }
+
+    @RequestMapping(value = "/display", method = RequestMethod.GET)
+    public String displayMovie(@RequestParam(name="id")String id ){
+        LOGGER.info("Display movie was called" + id);
+        movieService.getMovie(Integer.parseInt(id));
+        return DISPLAY;
+    }
+
 
 
     @GetMapping("/create.html")
