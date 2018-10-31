@@ -97,6 +97,15 @@ public class MovieRepoImpl extends JdbcFix implements MovieRepo {
             movie.getGenre().setGenre_id(result.getInt("genre"));
             movie.setProductionYear(result.getInt("productionYear"));
             movie.setTitle(result.getString("title"));
+
+            String getActors = "SELECT actor_id, actor_name FROM moviesactors WHERE movie_id =" + index +
+                    "INNER JOIN mewie.actors ON mewie.actors.actor_id = mewie.moviesactors.actor_id";
+            statement.executeQuery(getActors);
+            result = statement.getResultSet();
+
+            while(result.next()){
+                movie.getActors().add(new Actor(result.getInt("actor_id"), result.getString("actor_name"), 0, null));
+            }
             
             return movie;
 
