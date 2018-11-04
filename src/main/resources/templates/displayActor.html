@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" >
+<head>
+    <meta charset="UTF-8">
+    <title>AIH EHM DEH BHE</title>
+
+    <link rel="stylesheet" type="text/css" th:href="@{/css/beautiful.css}" />
+</head>
+<body>
+<div class="wrapper">
+    <header>
+        <a href="/">Movies</a>
+        <a href="actors.html">Actors</a>
+        <a href="login.html">Login</a>
+    </header>
+
+    <a href="create.html">Create movie</a>
+
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Birth year</th>
+            <th>Movies</th>
+            <th>Delete</th>
+            <th>Update</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:object="${actor}">
+            <td th:text="${actor.actor_id}"/>
+            <td><p th:text="${actor.name}"/></td>
+
+            <td th:text="${actor.birthYear}"/>
+            <td><p th:each="movie: ${actor.movies}" th:text="${movie.title}"/></td>
+
+            <td><a th:href="@{/deleteActor(id=${actor.actor_id})}"> Delete </a> </td>
+            <td><a th:href="@{/updateActor(id=${actor.actor_id})}"> Update </a> </td>
+        </tr>
+        </tbody>
+
+    </table>
+
+
+
+
+</div>
+</body>
+</html>
