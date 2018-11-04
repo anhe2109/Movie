@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="108.0" y="577.0">com.mewie.mewie.Repositories.GenreRepoImpl</node>
+    <node x="313.0" y="300.0">com.mewie.mewie.Repositories.Interfaces.UserRepo</node>
+    <node x="1219.817299898683" y="1202.0">com.mewie.mewie.Controllers.MovieController</node>
+    <node x="0.0" y="333.0">com.mewie.mewie.Repositories.Interfaces.GenreRepo</node>
+    <node x="184.7933004052686" y="33.0">com.mewie.mewie.Beans.Genre</node>
+    <node x="1626.2324088145897" y="0.0">icons</node>
+    <node x="541.0" y="277.0">com.mewie.mewie.Repositories.JdbcFix</node>
+    <node x="88.56729989868279" y="1045.0">com.mewie.mewie.Controllers.GenreController</node>
+    <node x="465.0147669706182" y="544.0">com.mewie.mewie.Repositories.UserRepolmpl</node>
+    <node x="1200.7933004052686" y="0.0">com.mewie.mewie.Beans.Actor</node>
+    <node x="86.06729989868279" y="798.5">com.mewie.mewie.Services.GenreService</node>
+    <node x="1081.0" y="533.0">com.mewie.mewie.Repositories.ActorRepoImpl</node>
+    <node x="1340.567299898683" y="1045.0">com.mewie.mewie.Controllers.ActorController</node>
+    <node x="787.4422998986829" y="989.0">com.mewie.mewie.Services.MovieService</node>
+    <node x="1242.2" y="300.0">com.mewie.mewie.Repositories.Interfaces.ActorRepo</node>
+    <node x="1276.317299898683" y="765.5">com.mewie.mewie.Services.ActorService</node>
+    <node x="647.9996200607904" y="755.0">com.mewie.mewie.Repositories.MovieRepoImpl</node>
+    <node x="834.0" y="544.0">com.mewie.mewie.Repositories.Interfaces.MovieRepo</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.mewie.mewie.Repositories.ActorRepoImpl" target="com.mewie.mewie.Repositories.Interfaces.ActorRepo">
+      <point x="96.79999999999995" y="-81.0" />
+      <point x="1298.8" y="513.0" />
+      <point x="1296.95" y="513.0" />
+      <point x="-54.75" y="70.0" />
+    </edge>
+    <edge source="com.mewie.mewie.Repositories.UserRepolmpl" target="com.mewie.mewie.Repositories.Interfaces.UserRepo">
+      <point x="-69.33333333333337" y="-70.0" />
+      <point x="499.68143363728484" y="483.0" />
+      <point x="417.0" y="483.0" />
+      <point x="0.0" y="70.0" />
+    </edge>
+    <edge source="com.mewie.mewie.Repositories.GenreRepoImpl" target="com.mewie.mewie.Repositories.JdbcFix">
+      <point x="34.60000000000002" y="-37.0" />
+      <point x="229.10000000000002" y="493.0" />
+      <point x="556.625" y="493.0" />
+      <point x="-109.375" y="93.0" />
+    </edge>
+    <edge source="com.mewie.mewie.Repositories.GenreRepoImpl" target="com.mewie.mewie.Beans.Genre">
+      <point x="-34.60000000000002" y="-37.0" />
+      <point x="159.89999999999998" y="513.0" />
+      <point x="183.5" y="513.0" />
+      <point x="183.5" y="247.0" />
+      <point x="225.0433004052686" y="247.0" />
+      <point x="-40.25" y="70.5" />
+    </edge>
+    <edge source="com.mewie.mewie.Controllers.GenreController" target="com.mewie.mewie.Services.GenreService">
+      <point x="0.0" y="-25.5" />
+      <point x="0.0" y="48.5" />
+    </edge>
+    <edge source="com.mewie.mewie.Repositories.Interfaces.GenreRepo" target="com.mewie.mewie.Beans.Genre">
+      <point x="0.0" y="-37.0" />
+      <point x="86.5" y="237.0" />
+      <point x="198.20996707193524" y="237.0" />
+      <point x="-67.08333333333331" y="70.5" />
+    </edge>
+    <edge source="com.mewie.mewie.Controllers.MovieController" target="com.mewie.mewie.Controllers.GenreController">
+      <point x="-138.33333333333348" y="-345.0" />
+      <point x="1247.4839665653494" y="1182.0" />
+      <point x="192.5672998986828" y="1182.0" />
+      <point x="0.0" y="25.5" />
+    </edge>
+    <edge source="com.mewie.mewie.Controllers.MovieController" target="com.mewie.mewie.Services.ActorService">
+      <point x="-27.666666666666742" y="-345.0" />
+      <point x="1358.1506332320162" y="1182.0" />
+      <point x="1330.067299898683" y="1182.0" />
+      <point x="-54.75" y="81.5" />
+    </edge>
+    <edge source="com.mewie.mewie.Repositories.Interfaces.ActorRepo" target="com.mewie.mewie.Beans.Actor">
+      <point x="0.0" y="-70.0" />
+      <point x="1351.7" y="257.0" />
+      <point x="1341.4183004052686" y="257.0" />
+      <point x="15.625" y="103.5" />
+    </edge>
+    <edge source="com.mewie.mewie.Services.MovieService" target="com.mewie.mewie.Repositories.Interfaces.MovieRepo">
+      <point x="56.75" y="-81.5" />
+      <point x="957.6922998986829" y="964.0" />
+      <point x="1004.25" y="964.0" />
+      <point x="56.75" y="70.0" />
+    </edge>
+    <edge source="com.mewie.mewie.Repositories.MovieRepoImpl" target="com.mewie.mewie.Beans.Genre">
+      <point x="0.0" y="-92.0" />
+      <point x="764.9996200607904" y="725.0" />
+      <point x="801.5" y="725.0" />
+      <point x="801.5" y="257.0" />
+      <point x="332.376633738602" y="257.0" />
+      <point x="67.08333333333337" y="70.5" />
+    </edge>
+    <edge source="com.mewie.mewie.Repositories.GenreRepoImpl" target="com.mewie.mewie.Repositories.Interfaces.GenreRepo">
+      <point x="-69.19999999999999" y="-37.0" />
+      <point x="125.30000000000007" y="513.0" />
+      <point x="129.75" y="513.0" />
+      <point x="43.25" y="37.0" />
+    </edge>
+    <edge source="com.mewie.mewie.Controllers.MovieController" target="com.mewie.mewie.Services.MovieService">
+      <point x="-83.0" y="-345.0" />
+      <point x="1302.817299898683" y="1172.0" />
+      <point x="900.9422998986829" y="1172.0" />
+      <point x="0.0" y="81.5" />
+    </edge>
+    <edge source="com.mewie.mewie.Repositories.UserRepolmpl" target="com.mewie.mewie.Repositories.JdbcFix">
+      <point x="69.33333333333337" y="-70.0" />
+      <point x="638.3481003039516" y="513.0" />
+      <point x="650.375" y="513.0" />
+      <point x="-15.625" y="93.0" />
+    </edge>
+    <edge source="com.mewie.mewie.Services.ActorService" target="com.mewie.mewie.Beans.Actor">
+      <point x="73.0" y="-81.5" />
+      <point x="1458.817299898683" y="735.0" />
+      <point x="1502.628191489362" y="735.0" />
+      <point x="1502.628191489362" y="257.0" />
+      <point x="1372.6683004052686" y="257.0" />
+      <point x="46.875" y="103.5" />
+    </edge>
+    <edge source="com.mewie.mewie.Repositories.MovieRepoImpl" target="com.mewie.mewie.Beans.Actor">
+      <point x="66.85714285714289" y="-92.0" />
+      <point x="831.8567629179333" y="735.0" />
+      <point x="823.5" y="735.0" />
+      <point x="823.5" y="237.0" />
+      <point x="1247.6683004052686" y="237.0" />
+      <point x="-78.125" y="103.5" />
+    </edge>
+    <edge source="com.mewie.mewie.Services.GenreService" target="com.mewie.mewie.Repositories.GenreRepoImpl">
+      <point x="0.0" y="-48.5" />
+      <point x="192.5672998986828" y="735.0" />
+      <point x="194.5" y="735.0" />
+      <point x="0.0" y="37.0" />
+    </edge>
+    <edge source="com.mewie.mewie.Repositories.ActorRepoImpl" target="com.mewie.mewie.Repositories.JdbcFix">
+      <point x="-48.40000000000009" y="-81.0" />
+      <point x="1153.6" y="483.0" />
+      <point x="775.375" y="483.0" />
+      <point x="109.375" y="93.0" />
+    </edge>
+    <edge source="com.mewie.mewie.Repositories.MovieRepoImpl" target="com.mewie.mewie.Repositories.JdbcFix">
+      <point x="-66.85714285714278" y="-92.0" />
+      <point x="698.1424772036476" y="735.0" />
+      <point x="715.8172998986829" y="735.0" />
+      <point x="715.8172998986829" y="513.0" />
+      <point x="681.625" y="513.0" />
+      <point x="15.625" y="93.0" />
+    </edge>
+    <edge source="com.mewie.mewie.Repositories.ActorRepoImpl" target="com.mewie.mewie.Beans.Actor">
+      <point x="0.0" y="-81.0" />
+      <point x="1202.0" y="513.0" />
+      <point x="1220.7" y="513.0" />
+      <point x="1220.7" y="247.0" />
+      <point x="1278.9183004052686" y="247.0" />
+      <point x="-46.875" y="103.5" />
+    </edge>
+    <edge source="com.mewie.mewie.Repositories.MovieRepoImpl" target="com.mewie.mewie.Repositories.Interfaces.MovieRepo">
+      <point x="100.28571428571433" y="-92.0" />
+      <point x="865.2853343465047" y="735.0" />
+      <point x="890.75" y="735.0" />
+      <point x="-56.75" y="70.0" />
+    </edge>
+    <edge source="com.mewie.mewie.Services.MovieService" target="com.mewie.mewie.Repositories.MovieRepoImpl">
+      <point x="-56.75" y="-81.5" />
+      <point x="844.1922998986829" y="964.0" />
+      <point x="764.9996200607904" y="964.0" />
+      <point x="0.0" y="92.0" />
+    </edge>
+    <edge source="com.mewie.mewie.Controllers.MovieController" target="com.mewie.mewie.Beans.Actor">
+      <point x="138.33333333333326" y="-345.0" />
+      <point x="1524.1506332320162" y="1182.0" />
+      <point x="1567.2324088145897" y="1182.0" />
+      <point x="1567.2324088145897" y="237.0" />
+      <point x="1435.1683004052688" y="237.0" />
+      <point x="109.37500000000006" y="103.5" />
+    </edge>
+    <edge source="com.mewie.mewie.Services.GenreService" target="com.mewie.mewie.Beans.Genre">
+      <point x="71.0" y="-48.5" />
+      <point x="263.5672998986828" y="735.0" />
+      <point x="291.5" y="735.0" />
+      <point x="291.5" y="257.0" />
+      <point x="278.70996707193524" y="257.0" />
+      <point x="13.416666666666629" y="70.5" />
+    </edge>
+    <edge source="com.mewie.mewie.Services.GenreService" target="com.mewie.mewie.Repositories.Interfaces.GenreRepo">
+      <point x="-71.0" y="-48.5" />
+      <point x="121.56729989868279" y="735.0" />
+      <point x="43.25" y="735.0" />
+      <point x="-43.25" y="37.0" />
+    </edge>
+    <edge source="com.mewie.mewie.Services.ActorService" target="com.mewie.mewie.Repositories.ActorRepoImpl">
+      <point x="-73.0" y="-81.5" />
+      <point x="1312.817299898683" y="735.0" />
+      <point x="1202.0" y="735.0" />
+      <point x="0.0" y="81.0" />
+    </edge>
+    <edge source="com.mewie.mewie.Controllers.MovieController" target="com.mewie.mewie.Controllers.ActorController">
+      <point x="27.666666666666742" y="-345.0" />
+      <point x="1413.4839665653496" y="1182.0" />
+      <point x="1441.567299898683" y="1182.0" />
+      <point x="0.0" y="25.5" />
+    </edge>
+    <edge source="com.mewie.mewie.Controllers.ActorController" target="com.mewie.mewie.Services.ActorService">
+      <point x="0.0" y="-25.5" />
+      <point x="54.75" y="81.5" />
+    </edge>
+    <edge source="com.mewie.mewie.Services.ActorService" target="com.mewie.mewie.Repositories.Interfaces.ActorRepo">
+      <point x="0.0" y="-81.5" />
+      <point x="1385.817299898683" y="735.0" />
+      <point x="1406.45" y="735.0" />
+      <point x="54.75" y="70.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.8300209205020921" x="727.5715185885318" y="936.1109010712034" />
+  <SelectedNodes>
+    <node>com.mewie.mewie.Services.MovieService</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Methods</Category>
+    <Category>Fields</Category>
+    <Category>Constructors</Category>
+    <Category>Properties</Category>
+    <Category>Inner Classes</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
