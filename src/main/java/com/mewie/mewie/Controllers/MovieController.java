@@ -105,49 +105,5 @@ public class MovieController {
         return REDIRECT_INDEX;
     }
 
-    @GetMapping("/actors.html")
-    public String actors(Model model){
-        LOGGER.info("actors was called . . . ");
-        List<Actor> actors = actorController.actorService.getActors();
-        model.addAttribute("actors", actors);
-
-        return ACTORS;
-    }
-
-    @GetMapping("/createActor.html")
-    public String createActor(Model model, Model movieDisplay){
-        LOGGER.info("create actor was called... ");
-        model.addAttribute("actor", new Actor());
-        movieDisplay.addAttribute("actors", movieService.getMovies());
-        return CREATE_ACTOR;
-    }
-
-    @RequestMapping("/saveActor")
-    public String saveActor(@ModelAttribute Actor actor) {
-        LOGGER.info("saveActor was called... ");
-        actorController.actorService.createActor(actor);
-        return REDIRECT_ACTORS;
-    }
-
-    @RequestMapping(value = "/deleteActor", method = RequestMethod.GET)
-    public String deleteActor(@RequestParam(name="id")String id ){
-        LOGGER.info("Delete actor was called " + id);
-        actorController.actorService.deleteActor(Integer.parseInt(id));
-        return REDIRECT_ACTORS;
-    }
-
-    @RequestMapping(value = "/updateActor", method = RequestMethod.GET)
-    public String updateMovie(@RequestParam(name = "id") String id, Model model) {
-        LOGGER.info("updateActor action called... " + id);
-        model.addAttribute("actor", actorService.getActor(Integer.parseInt(id)));
-        return UPDATE_ACTOR;
-    }
-
-    @RequestMapping("/updateActorSubmit")
-    public String updateMovie(@ModelAttribute Actor actor){
-        LOGGER.info("updateMovieSubmit was called");
-        actorService.updateActor(actor);
-        return REDIRECT_ACTORS;
-    }
 
 }
